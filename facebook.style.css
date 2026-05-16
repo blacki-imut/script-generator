@@ -1,0 +1,24 @@
+/*code css*/
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; color: #1c1e21; }
+        .glass-card {
+            background: white;
+            box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+        /* Facebook Brand Colors */
+        .fb-blue { color: #1877f2; }
+        .bg-fb { background-color: #1877f2; }
+        .gradient-text {
+            background: linear-gradient(90deg, #1877f2, #0056b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-fb {
+            background-color: #1877f2;
+            transition: all 0.2s ease;
+        }
+        .btn-fb:hover { background-color: #166fe5; transform: scale(1.02); }
+        .social-btn { transition: all 0.3s ease; }
+        .social-btn:hover { transform: translateY(-5px); }
+ 
