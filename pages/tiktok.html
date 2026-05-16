@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Script Generator - Blacki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4140660607156269"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="tt.style.css">
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tombol Kembali -->
+<div class="fixed top-4 left-4 z-50">
+
+  <a href="index.html"
+     style="font-family:'Poppins',sans-serif;"
+     class="group flex items-center gap-3 px-5 py-3 rounded-2xl
+            bg-black/40 backdrop-blur-2xl
+            border border-white/10
+            text-white font-semibold
+            shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+            hover:bg-white/10
+            hover:scale-105
+            transition duration-300">
+
+    <div class="w-9 h-9 rounded-xl
+                bg-gradient-to-r from-pink-500 to-cyan-400
+                flex items-center justify-center
+                shadow-lg">
+
+      <i class="fa-solid fa-arrow-left text-sm"></i>
+
+    </div>
+
+    <span class="tracking-wide">
+      Kembali
+    </span>
+
+  </a>
+
+</div>
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold mb-2">TikTok <span class="gradient-text">Script Generator</span></h1>
+            <p class="text-slate-400">Buat konten viral dalam hitungan detik!</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Left Side: Input -->
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="flex mb-6 space-x-2 bg-slate-800 p-1 rounded-lg">
+                    <button onclick="switchTab('ide')" id="tab-ide" class="flex-1 py-2 rounded-md bg-slate-700 text-white font-semibold">
+                        <i class="fas fa-lightbulb mr-2"></i>Ide
+                    </button>
+                    <button onclick="switchTab('foto')" id="tab-foto" class="flex-1 py-2 rounded-md text-slate-400">
+                        <i class="fas fa-camera mr-2"></i>Foto Produk
+                    </button>
+                </div>
+
+                <div id="input-section">
+                    <div id="ide-input">
+                        <label class="block text-sm font-medium mb-2">Deskripsikan Ide atau Produk Anda</label>
+                        <textarea id="prompt-text" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm" placeholder="Contoh: Skincare serum untuk mencerahkan wajah dalam 7 hari..."></textarea>
+                    </div>
+
+                    <div id="foto-input" class="hidden">
+                        <label class="block text-sm font-medium mb-2">Upload Foto Produk</label>
+                        <div class="border-2 border-dashed border-slate-700 rounded-xl p-8 text-center cursor-pointer hover:border-pink-500 transition-colors" onclick="document.getElementById('file-upload').click()">
+                            <i class="fas fa-cloud-upload-alt text-3xl mb-2 text-slate-500"></i>
+                            <p class="text-sm text-slate-400">Klik untuk upload foto</p>
+                            <input type="file" id="file-upload" class="hidden" accept="image/*" onchange="handleFileUpload(event)">
+                            <div id="preview-container" class="mt-4 hidden">
+                                <img id="img-preview" class="h-32 mx-auto rounded-lg shadow-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <label class="block text-sm font-medium mb-2">Pilih Style Konten</label>
+                    <select id="style-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+                        <option value="casual">Casual (Santai & Akrab)</option>
+                        <option value="genz">Gen Z (Slay, FOMO, Slang)</option>
+                        <option value="edukatif">Edukatif (Informatif & Serius)</option>
+                        <option value="review">Review (Jujur & Detail)</option>
+                        <option value="formal">Formal (Profesional)</option>
+                    </select>
+                </div>
+
+                <button onclick="generateScript()" class="w-full mt-8 py-3 rounded-xl btn-gradient font-bold text-white shadow-lg">
+                    GENERATE SCRIPT <i class="fas fa-magic ml-2"></i>
+                </button>
+            </div>
+
+            <!-- Right Side: Result -->
+            <div class="glass-card p-6 rounded-2xl flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="font-bold text-lg"><i class="fas fa-scroll mr-2 text-pink-500"></i>Hasil Script</h2>
+                    <button onclick="copyToClipboard()" class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg transition-colors">
+                        <i class="fas fa-copy mr-1"></i> Copy Paste
+                    </button>
+                </div>
+                <div id="script-result" class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 flex-grow overflow-y-auto text-sm leading-relaxed whitespace-pre-wrap">
+                    Hasil script Anda akan muncul di sini...
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="mt-12 mb-8">
+            <h3 class="text-center text-slate-400 mb-6 text-sm uppercase tracking-widest font-semibold">Support Kreator</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://youtube.com/@blacki-2?sub_confirmation=1" target="_blank" class="social-btn flex items-center bg-[#FF0000] px-6 py-3 rounded-full text-white font-bold">
+                    <i class="fab fa-youtube mr-2 text-xl"></i> YouTube
+                </a>
+                <a href="https://tiktok.com/@blackiimut2" target="_blank" class="social-btn flex items-center bg-black border border-white/20 px-6 py-3 rounded-full text-white font-bold">
+                    <i class="fab fa-tiktok mr-2 text-xl"></i> TikTok
+                </a>
+                <a href="https://saweria.co/Blacki2" target="_blank" class="social-btn flex items-center bg-[#faae2b] px-6 py-3 rounded-full text-black font-bold">
+                    <i class="fas fa-donate mr-2 text-xl"></i> Saweria
+                </a>
+            </div>
+        </div>
+
+        <footer class="text-center text-slate-500 text-xs mt-10">
+            &copy; 2024 Built with ❤️ by Blacki Script Generator
+        </footer>
+    </div>
+
+    
+    <script src="tt.script.js"></script>
+</body>
+</html>
